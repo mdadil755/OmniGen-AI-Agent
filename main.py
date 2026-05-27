@@ -18,7 +18,7 @@ app = Flask(__name__,
 brain = OmniGenBrain()
 engine = OmniGenPipelineEngine()
 
-# In-memory conversational tracking state
+
 session_memory = []
 
 @app.route('/')
@@ -67,26 +67,26 @@ def process_chat():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    # 1. Purane saare blocked background processes ko system level par kill karo
+    
     import subprocess
     try:
         subprocess.run(["pkill", "-f", "ngrok"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except:
         pass
 
-    # 2. Ngrok Tunnel ko initialize karo dynamic tracking ke liye
+    
     from pyngrok import ngrok
     try:
-        # Apni static dashboard problem bypass karne ke liye disconnect protocol
+        
         ngrok.disconnect_all()
     except:
         pass
         
-    # Apna Ngrok Auth Token yahan set karo (Agar config me hai toh config.NGROK_TOKEN use kar sakte ho)
+    
     ngrok.set_auth_token("")
     
     try:
-        # Dynamic link generate karne ke liye bind_tls forcing
+        
         public_url = ngrok.connect(5000, bind_tls=True)
         print("\n" + "="*60)
         print(f"🚀 OMNIGEN PLATFORM IS LIVE ON INTERNET!")
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"Tunnel Initialization Failed: {e}")
 
-    # 3. Flask Server Production Trigger
+
     app.run(host="127.0.0.1", port=5000, debug=False, use_reloader=False)
 
 
