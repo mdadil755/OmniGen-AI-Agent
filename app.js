@@ -20,9 +20,9 @@ async function submitMessage() {
     inputNode.value = "";
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
-    // Network connection controller setup kiya drop bachane ke liye
+    
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes timeout extension
+    const timeoutId = setTimeout(() => controller.abort(), 120000); 
 
     try {
         const response = await fetch('/process_chat', {
