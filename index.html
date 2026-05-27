@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniGen AI Agent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="p-4 md:p-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-5 bg-card p-4 rounded-xl flex flex-col justify-between h-90vh shadow-2xl">
+            <div>
+                <div class="border-b border-gray-800 pb-3 mb-4">
+                    <h1 class="text-xl font-black text-blue-500 tracking-wide uppercase">OmniGen Agent Core</h1>
+                    <p class="text-xs text-gray-500">Multi-Modal Interaction Subsystem</p>
+                </div>
+                <div id="chatContainer" class="space-y-4 overflow-y-auto pr-2" style="height: 60vh;">
+                    <div class="bg-gray-900 p-3 rounded-lg border border-gray-800 text-xs text-blue-400">
+                        ⚡ System Connection Stable. Weights compiled. Send prompt tokens to initialize.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-gray-800">
+                <div class="flex gap-2">
+                    <input id="userInput" type="text" placeholder="Type command (e.g., 'a cat', 'make it anime')..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors">
+                    <button id="sendBtn" onclick="submitMessage()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-sm transition-colors">Trigger</button>
+                </div>
+                <div class="flex justify-between items-center mt-2 px-1">
+                    <span id="statusIndicator" class="text-xs text-gray-500 font-mono">Engine: Idle</span>
+                    <span id="intentIndicator" class="text-xs text-gray-500 font-mono">Intent: Auto</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-card p-4 rounded-xl flex flex-col justify-between h-90vh shadow-2xl">
+            <div>
+                <div class="border-b border-gray-800 pb-3 mb-4">
+                    <h2 class="text-lg font-bold text-gray-300">Live Render Matrix</h2>
+                </div>
+                <div id="canvasBox" class="w-full flex items-center justify-center border-2 border-dashed border-gray-700 rounded-xl relative overflow-hidden" style="height: 65vh;">
+                    <div id="placeholderText" class="text-gray-600 text-center text-sm font-medium">Awaiting execution pipelines...</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mt-4">
+                <div class="bg-gray-900 border border-gray-800 p-2 rounded-lg truncate">
+                    <p class="text-xxs text-gray-500 uppercase font-mono">Expanded Internal Prompt:</p>
+                    <p id="expandedPromptText" class="text-xs text-gray-400 italic truncate">None</p>
+                </div>
+                <a id="downloadBtn" href="#" download="omnigen_render.jpg" class="bg-green-700 hover:bg-green-600 text-white text-center font-bold p-3 rounded-lg text-sm transition-colors flex items-center justify-center pointer-events-none opacity-50">Download Asset HD</a>
+            </div>
+        </div>
+
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
